@@ -105,9 +105,9 @@ router.put("/:id", async (req, res) => {
 
     if (diets.length) {
       await modifyRecipe.setDiets([]);
-      diets.forEach(async (e) => {
+      diets.forEach(async (diet) => {
         const auxDiets = await Diet.findAll({
-          where: { name: e },
+          where: { name: diet },
         });
         await modifyRecipe.addDiet(auxDiets[0]);
       });
